@@ -1,0 +1,7 @@
+data/tiered-imagenet-224/moco_v2_800ep.pth.tar
+wandb
+out
+plots
+pytorch_grad_cam
+__pycache__/
+

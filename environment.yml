@@ -1,0 +1,30 @@
+name: hier-cos
+channels:
+    - pytorch
+    - anaconda
+    - menpo
+    - conda-forge
+    - nvidia
+dependencies:
+    - python=3.6
+    - pip
+    - numpy
+    - cudatoolkit=11.1
+    - pytorch
+    - torchvision
+    - nltk
+    - pyyaml
+    - wandb
+    - scikit-learn
+    - menpo::opencv3
+    - pip:
+        - git+https://github.com/facebookresearch/fastText.git
+        - conditional
+        - ttach
+        - matplotlib
+        - Pillow
+        - tqdm
+
+# In case of errors with opencv (especially with opencv-headless for A100 GPU), try either or both of the following:
+# apt-get update && apt-get install libgl1 libgtk2.0-dev
+# conda install -c menpo opencv
