@@ -7,8 +7,6 @@ from MBM.better_mistakes.trees import load_hierarchy
 # HAFrame
 from HAFrame.distance import distance_dict_to_mat
 from HAFrame.solve_HAF import map_hdistance_to_cosine_similarity_exponential_decay
-
-# HAFS
 from nltk.tree import Tree
 from collections import deque
 
@@ -121,7 +119,7 @@ def get_hiercos_parameters_hierarchical_labels(opts, classes, distances, fa=True
 
     species_label_to_node_id = map_tree_to_ids_bfs(hierarchy)
     species_node_id_to_label = {v: k for k, v in species_label_to_node_id.items()}
-    hiercos_dim = len(species_label_to_node_id)  # dimension of HAFS is equal to the number of nodes in the tree
+    hiercos_dim = len(species_label_to_node_id)  # dimension of V_T is equal to the number of nodes in the tree
     opts.num_classes = hiercos_dim
 
     opts.orthonormal_basis_vectors = get_orthonormal_vectors(hiercos_dim)
@@ -289,9 +287,9 @@ def get_hiercos_parameters_hierarchical_labels(opts, classes, distances, fa=True
     return opts, hiercos_parameters
 
 
-class HAFS_Loss(torch.nn.Module):
+class HierCOS_Loss(torch.nn.Module):
     def __init__(self, hiercos_params, log_level_wise_performance=False):
-        super(HAFS_Loss, self).__init__()
+        super(HierCOS_Loss, self).__init__()
         self.hiercos_params = hiercos_params
         self.log_level_wise_performance = log_level_wise_performance
         self.kl_loss = torch.nn.KLDivLoss(reduction="batchmean")

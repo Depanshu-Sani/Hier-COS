@@ -1,6 +1,6 @@
 # Hier-COS and HOPS
 
-Official code repository for **[Learning and Evaluating Hierarchical Feature Representations](https://arxiv.org/abs/2303.05689)** <br/>
+Official code repository for **[Learning and Evaluating Hierarchical Feature Representations](https://arxiv.org/pdf/2503.07853)** <br/>
 Depanshu Sani and Saket Anand
 
 
@@ -60,6 +60,12 @@ data/inaturalist19_ilsvrc_distances.pkl.xz
 data/tiered_imagenet_ilsvrc_distances.pkl.xz
 ```
 
+## Pre-trained models
+Pre-trained model weights (seed 0) for hier-cos method can be downloaded from [this link](https://drive.google.com/drive/folders/1e4mtYSqeWVMd462vFPmuOU1BEIFLWlwI?usp=sharing).
+
+## Pre-trained ViT
+We use the ViT-MAE pre-trained on iNat-21 dataset from [this link](https://huggingface.co/vesteinn/vit-mae-inat21). The code to downlaod the pretrained weights is already integrated in the repository.
+
 ## Experiments
 
 Training and testing scripts for all the datasets are included in:
@@ -72,15 +78,11 @@ bash experiments/<DATASET>/<METHOD>.sh
 ```
 
 All the bash scripts need to be executed at the same directory with main.py <br/>
- 
 
 
 ## Acknowledgement
-This codebase is largely refactored from the following GitHub repositories: <br/>
+The python file `util/hiercos_construction.py` contains the **most important** changes (Hier-COS construction and the loss function). This codebase is largely refactored from the following GitHub repositories: <br/>
 
-- [Making-Better-Mistakes](https://github.com/fiveai/making-better-mistakes) 
-- [CRM-Better-Mistakes](https://github.com/sgk98/CRM-Better-Mistakes)
-- [Neural_Collapse](https://github.com/corwinliu9669/Neural_Collapse)
 - [HAF](https://github.com/07Agarg/HAF)
 - [HAFrame](https://github.com/ltong1130ztr/HAFrame)
 

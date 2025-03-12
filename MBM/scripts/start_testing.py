@@ -23,8 +23,7 @@ from HAFrame.losses import MixedLoss_CEandGeneralSCSL
 from HAFrame.distance import distance_dict_to_mat
 from HAFrame.solve_HAF import hdistance_to_similarity_matrix
 
-# HAFS
-from util.hiercos_construction import get_hiercos_parameters, HAFS_Loss
+from util.hiercos_construction import get_hiercos_parameters, HierCOS_Loss
 
 
 DATASET_NAMES = [
@@ -103,7 +102,7 @@ def main(test_opts):
     # Model, loss, optimizer ----------------------------------------------------------------------------------------- #
     # setup loss
     if opts.feature_space == "hier-cos":
-        loss_function = HAFS_Loss(hiercos_params, log_level_wise_performance=True)
+        loss_function = HierCOS_Loss(hiercos_params, log_level_wise_performance=True)
     elif opts.loss == "cross-entropy":
         loss_function = nn.CrossEntropyLoss().cuda(opts.gpu)
     elif opts.loss == "mixed-ce-gscsl":

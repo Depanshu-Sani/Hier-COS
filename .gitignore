@@ -4,4 +4,5 @@ out
 plots
 pytorch_grad_cam
 __pycache__/
+experiments/wildlife_species/
 

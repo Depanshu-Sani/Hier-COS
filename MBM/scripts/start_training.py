@@ -31,8 +31,7 @@ from HAFrame.losses import MixedLoss_CEandGeneralSCSL
 from HAFrame.distance import distance_dict_to_mat
 from HAFrame.solve_HAF import hdistance_to_similarity_matrix
 
-# HAFS
-from util.hiercos_construction import get_hiercos_parameters, HAFS_Loss
+from util.hiercos_construction import get_hiercos_parameters, HierCOS_Loss
 
 
 CUSTOM_MODELS = [
@@ -133,7 +132,7 @@ def main_worker(gpus_per_node, opts):
 
     # HAF++ node embedding generation
     opts, hiercos_params = get_hiercos_parameters(opts, classes, distances, only_fine_labels=False, fa=True, fd=True)
-    print("HAFS dimensions:", opts.num_classes)
+    print("Hier-COS dimensions:", opts.num_classes)
 
     # Model, loss, optimizer ----------------------------------------------------------------------------------------- #
 
@@ -159,7 +158,7 @@ def main_worker(gpus_per_node, opts):
 
     # setup loss
     if opts.feature_space == "hier-cos":
-        loss_function = HAFS_Loss(hiercos_params)
+        loss_function = HierCOS_Loss(hiercos_params)
     elif opts.loss == "cross-entropy":
         loss_function = nn.CrossEntropyLoss().cuda(opts.gpu)
     elif opts.loss == "mixed-ce-gscsl":

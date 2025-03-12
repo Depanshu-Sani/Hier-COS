@@ -8,7 +8,7 @@ from scipy.special import softmax
 from util import data_loader, logger
 from MBM.better_mistakes.trees import load_distances, lca_to_hierarchy, hier_dist, hier_dist_mistake
 from MBM.better_mistakes.model.init import init_model_on_gpu
-from util.hiercos_construction import get_hiercos_parameters, HAFS_Loss
+from util.hiercos_construction import get_hiercos_parameters, HierCOS_Loss
 
 
 def get_dataset_stats(opts):
@@ -48,7 +48,7 @@ def logit_extraction(data_loader, model, opts, verbose=True, distances=None, cla
 
     logit = []
     gt = []
-    loss_function = HAFS_Loss(opts.hiercos_params, log_level_wise_performance=True)
+    loss_function = HierCOS_Loss(opts.hiercos_params, log_level_wise_performance=True)
 
     with torch.no_grad():
         for i, (input_var, target) in enumerate(data_loader):

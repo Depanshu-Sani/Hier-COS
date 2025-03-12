@@ -83,9 +83,9 @@ def init_model_on_gpu(gpus_per_node, opts, distances=None):
         if opts.feature_space != "hier-cos":
             pass
         elif opts.orthonormal_basis_vectors is None:
-            print("[HAFS] Learning the basis of the HAFS!")
+            print("[Hier-COS] Learning the basis of the Hier-COS!")
         else:
-            print("[HAFS] Basis of the HAFS is fixed to an orthonormal basis set!")
+            print("[Hier-COS] Basis of the Hier-COS is fixed to an orthonormal basis set!")
 
     if opts.arch == "wide_resnet":
         model = wideresnet.WideResNet(num_classes=opts.num_classes)
